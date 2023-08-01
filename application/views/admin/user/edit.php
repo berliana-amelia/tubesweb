@@ -1,12 +1,12 @@
-<div class="conatiner">
-
+<!-- Kode HTML untuk mengedit informasi pengguna (user) -->
+<div class="container">
     <form action="<?php echo base_url().'admin/user/edit/'.$user['u_id']; ?>" method="POST"
         class="form-container mx-auto shadow-container" id="myForm" style="width:80%">
-        <h3 class="mb-3 p-2 text-center">Edit User "<?php echo $user['username']; ?>"</h3>
+        <h3 class="mb-3 p-2 text-center">Edit Pengguna "<?php echo $user['username']; ?>"</h3>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="username">Enter Username</label>
+                    <label for="username">Masukkan Nama Pengguna</label>
                     <input type="text" id="userName" class="form-control
                     <?php echo (form_error('username') != "") ? 'is-invalid' : '';?>" name="username"
                         value="<?php echo set_value('username', $user['username'])?>">
@@ -14,7 +14,7 @@
                     <span></span>
                 </div>
                 <div class="form-group">
-                    <label for="firstname">Enter First Name</label>
+                    <label for="firstname">Masukkan Nama Depan</label>
                     <input type="text" id="firstName" class="form-control
                     <?php echo (form_error('firstname') != "") ? 'is-invalid' : '';?>" name="firstname"
                         value="<?php echo set_value('firstname', $user['f_name'])?>">
@@ -22,7 +22,7 @@
                     <span></span>
                 </div>
                 <div class="form-group">
-                    <label for="lastname">Enter Last Name</label>
+                    <label for="lastname">Masukkan Nama Belakang</label>
                     <input type="text" id="lastName" class="form-control 
                     <?php echo (form_error('lastname') != "") ? 'is-invalid' : '';?>" name="lastname"
                         value="<?php echo set_value('lastname', $user['l_name'])?>">
@@ -34,41 +34,42 @@
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" class="form-control
-                    <?php echo (form_error('email') != "") ? 'is-invalid' : '';?>" name="email" placeholder="email"
+                    <?php echo (form_error('email') != "") ? 'is-invalid' : '';?>" name="email" placeholder="Email"
                         value="<?php echo set_value('email', $user['email'])?>">
                     <?php echo form_error('email'); ?>
                     <span></span>
                 </div>
                 <div class="form-group">
-                    <label for="phone">Phone</label>
+                    <label for="phone">Nomor Telepon</label>
                     <input type="number" id="phone" class="form-control
-                    <?php echo (form_error('phone') != "") ? 'is-invalid' : '';?>" name="phone" placeholder="Phone"
+                    <?php echo (form_error('phone') != "") ? 'is-invalid' : '';?>" name="phone" placeholder="Nomor Telepon"
                         value="<?php echo set_value('phone', $user['phone'])?>">
                     <?php echo form_error('phone'); ?>
                     <span></span>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
+                    <label for="password">Kata Sandi</label>
                     <input type="password" id="pass" class="form-control
                     <?php echo (form_error('password') != "") ? 'is-invalid' : '';?>" name="password"
-                        placeholder="Password" value="<?php echo set_value('password', $user['password'])?>">
+                        placeholder="Kata Sandi" value="<?php echo set_value('password', $user['password'])?>">
                     <?php echo form_error('password'); ?>
                     <span></span>
                 </div>
             </div>
         </div>
         <div class="form-group">
-            <label for="address">Address</label>
+            <label for="address">Alamat</label>
             <textarea name="address" id="address" type="text" style="height:70px;"
                 class="form-control
             <?php echo (form_error('address') != "") ? 'is-invalid' : '';?>"><?php echo set_value('address', $user['address']);?></textarea>
             <?php echo form_error('address'); ?>
             <span></span>
         </div>
-        <button type="submit" class="btn btn-success">Make Changes</button>
-        <a href="<?php echo base_url().'admin/user/index'; ?>" class="btn btn-secondary">Back</a>
+        <button type="submit" class="btn btn-success">Simpan Perubahan</button>
+        <a href="<?php echo base_url().'admin/user/index'; ?>" class="btn btn-secondary">Kembali</a>
     </form>
 </div>
+
 <script>
 const form = document.getElementById('myForm');
 const userName = document.getElementById('userName');
@@ -82,7 +83,7 @@ const address = document.getElementById('address');
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     validate();
-})
+});
 
 const isEmail = (emailVal) => {
     var re =
@@ -90,13 +91,13 @@ const isEmail = (emailVal) => {
     if (!re.test(emailVal)) {
         return "fail";
     }
-}
+};
 
 const sendData = (sRate, count) => {
     if (sRate === count) {
         event.currentTarget.submit();
     }
-}
+};
 
 const successMsg = () => {
     let formCon = document.getElementsByClassName('form-control');
@@ -109,7 +110,7 @@ const successMsg = () => {
             return false;
         }
     }
-}
+};
 
 const validate = () => {
     const userNameVal = userName.value.trim();
@@ -120,65 +121,65 @@ const validate = () => {
     const phoneVal = phone.value.trim();
     const addressVal = address.value.trim();
 
-    //username validation
+    // validasi username
     if (userNameVal === "") {
-        setErrorMsg(userName, 'username cannot be blank');
+        setErrorMsg(userName, 'nama pengguna tidak boleh kosong');
     } else if (userNameVal.length <= 4 || userNameVal.length >= 16) {
-        setErrorMsg(userName, 'username length should be between 5 and 15"');
+        setErrorMsg(userName, 'panjang username harus antara 5 dan 15 karakter');
     } else if (!isNaN(userNameVal)) {
-        setErrorMsg(userName, 'only characters are allowed');
+        setErrorMsg(userName, 'hanya karakter yang diperbolehkan');
     } else {
         setSuccessMsg(userName);
     }
 
-    //firstname validation
+    // validasi nama depan
     if (firstNameVal === "") {
-        setErrorMsg(firstName, 'firstname cannot be blank');
+        setErrorMsg(firstName, 'nama depan tidak boleh kosong');
     } else if (!isNaN(firstNameVal)) {
-        setErrorMsg(firstName, 'only characters are allowed');
+        setErrorMsg(firstName, 'hanya karakter yang diperbolehkan');
     } else {
         setSuccessMsg(firstName);
     }
 
-    //lastname validation
+    // validasi nama belakang
     if (lastNameVal === "") {
-        setErrorMsg(lastName, 'lastname cannot be blank');
+        setErrorMsg(lastName, 'nama belakang tidak boleh kosong');
     } else {
         setSuccessMsg(lastName)
     }
 
-    //email validation
+    // validasi email
     if (emailVal === "") {
-        setErrorMsg(email, 'email cannot be blank');
+        setErrorMsg(email, 'email tidak boleh kosong');
     } else if (isEmail(emailVal) === "fail") {
-        setErrorMsg(email, 'enter valid email only');
+        setErrorMsg(email, 'masukkan email yang valid');
     } else {
         setSuccessMsg(email);
     }
 
-    //password validation
+    // validasi kata sandi
     if (passVal === "") {
-        setErrorMsg(pass, 'password can not be blank');
+        setErrorMsg(pass, 'kata sandi tidak boleh kosong');
     } else if (passVal.length <= 7 || passVal.length >= 16) {
-        setErrorMsg(pass, 'password length should be between 8 and 15');
+        setErrorMsg(pass, 'panjang kata sandi harus antara 8 dan 15 karakter');
     } else {
         setSuccessMsg(pass);
     }
 
-    //phone validation
+    // validasi kontak
     if (phoneVal === "") {
-        setErrorMsg(phone, 'phone cannot be blank');
+        setErrorMsg(phone, 'nomor telepon tidak boleh kosong');
     } else if (phoneVal.length != 10) {
-        setErrorMsg(phone, 'enter valid phone number only');
+        setErrorMsg(phone, 'masukkan nomor telepon yang valid');
     } else {
         setSuccessMsg(phone);
     }
 
-    //address validation
+    // validasi alamat
     if (addressVal === "") {
-        setErrorMsg(address, 'address cannot be blank');
+        setErrorMsg(address, 'alamat tidak boleh kosong');
     } else if (addressVal.length < 5) {
-        setErrorMsg(address, "Enter valid address only");
+        setErrorMsg(address, "Masukkan alamat yang valid");
     } else {
         setSuccessMsg(address);
     }
@@ -187,13 +188,12 @@ const validate = () => {
 }
 
 function setErrorMsg(ele, msg) {
-
     const formCon = ele.parentElement;
     const formInput = formCon.querySelector('.form-control');
     const span = formCon.querySelector('span');
     span.innerText = msg;
     formInput.className = "form-control is-invalid";
-    span.className = "invalid-feedback font-weight-bold"
+    span.className = "invalid-feedback font-weight-bold";
 }
 
 function setSuccessMsg(ele) {

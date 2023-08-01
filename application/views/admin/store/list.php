@@ -1,3 +1,4 @@
+<!-- Kode HTML untuk menampilkan daftar Cabang yang tersedia -->
 <div class="container my-3">
     <?php if($this->session->flashdata('res_success') != ""):?>
     <div class="alert alert-success">
@@ -11,25 +12,25 @@
     <?php endif ?>
     <div class="row">
         <div class="col-md-6">
-            <h4>Available Restaurant/s</h4>
+            <h4>Cabang Tersedia</h4>
         </div>
         <div class="col-md-6 text-right">
-            <input class="form-control mb-3" id="myInput" type="text" placeholder="Search .." style="width:50%;">
+            <input class="form-control mb-3" id="myInput" type="text" placeholder="Cari .." style="width:50%;">
         </div>
         <div class="col-md-12">
             <table class="table table-striped table-responsive table-hover table-bordered">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Name</th>
+                        <th>Nama</th>
                         <th>Email</th>
-                        <th>Contact</th>
+                        <th>Kontak</th>
                         <th>Website</th>
-                        <th>Open Hrs</th>
-                        <th>Close Hrs</th>
-                        <th>Open Days</th>
-                        <th>Address</th>
-                        <th>Action</th>
+                        <th>Jam Buka</th>
+                        <th>Jam Tutup</th>
+                        <th>Hari Buka</th>
+                        <th>Alamat</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody id="myTable">
@@ -50,7 +51,7 @@
                                 class="btn btn-info mb-1"><i class="fas fa-edit mr-1"></i>Edit</a>
 
                             <a href="javascript:void(0);" onclick="deleteStore(<?php echo $store['r_id']; ?>)"
-                                class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+                                class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>
                         </td>
                         <!-- <center>
                                 <td><img class="img-responsive radius" 
@@ -61,7 +62,7 @@
                     <?php } ?>
                     <?php } else {?>
                     <tr>
-                        <td colspan="10">Records not found</td>
+                        <td colspan="10">Data tidak ditemukan</td>
                     </tr>
                     <?php } ?>
                 </tbody>
@@ -72,7 +73,7 @@
 
 <script type="text/javascript">
 function deleteStore(id) {
-    if (confirm("Are you sure you want to delete store?")) {
+    if (confirm("Apakah Anda yakin ingin menghapus Cabang?")) {
         window.location.href = '<?php echo base_url().'admin/store/delete/';?>' + id;
     }
 }

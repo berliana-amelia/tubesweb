@@ -1,44 +1,45 @@
-<div class="conatiner">
+<!-- Kode HTML untuk mengedit detail restoran -->
+<div class="container">
     <form action="<?php echo base_url().'admin/store/edit/'.$store['r_id'];?>" method="POST"
         class="form-container mx-auto  shadow-container" style="width:90%" enctype="multipart/form-data">
-        <h3 class="mb-3 p-2 text-center mb-3">Edit "<?php echo $store['name'] ?>" Details</h3>
+        <h3 class="mb-3 p-2 text-center mb-3">Edit Detail Cabang "<?php echo $store['name'] ?>"</h3>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="control-label">Restaurant Name</label>
+                    <label class="control-label">Nama Cabang</label>
                     <input type="text" name="res_name"  class="form-control
-                    <?php echo (form_error('res_name') != "") ? 'is-invalid' : '';?>" placeholder="Add restaurant name"
+                    <?php echo (form_error('res_name') != "") ? 'is-invalid' : '';?>" placeholder="Tambahkan Nama Cabang"
                         value="<?php echo set_value('res_name', $store['name']);?>">
                     <?php echo form_error('res_name'); ?>
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Bussiness E-mail</label>
+                    <label class="control-label">Email Bisnis</label>
                     <input type="text" name="email" class="form-control form-control-danger
-                    <?php echo (form_error('email') != "") ? 'is-invalid' : '';?>" placeholder="example@gmail.com"
+                    <?php echo (form_error('email') != "") ? 'is-invalid' : '';?>" placeholder="contoh@gmail.com"
                         value="<?php echo set_value('email', $store['email']);?>">
                     <?php echo form_error('email'); ?>
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Phone</label>
+                    <label class="control-label">Kontak</label>
                     <input type="text" name="phone" class="form-control
-                    <?php echo (form_error('phone') != "") ? 'is-invalid' : '';?>" placeholder="phone no"
+                    <?php echo (form_error('phone') != "") ? 'is-invalid' : '';?>" placeholder="nomor telepon"
                         value="<?php echo set_value('phone', $store['phone']);?>">
                         <?php echo form_error('phone'); ?>
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Website URL</label>
+                    <label class="control-label">URL Situs Web</label>
                     <input type="text" name="url" class="form-control form-control-danger
-                    <?php echo (form_error('url') != "") ? 'is-invalid' : '';?>" placeholder=" http://example.com"
+                    <?php echo (form_error('url') != "") ? 'is-invalid' : '';?>" placeholder="http://contoh.com"
                         value="<?php echo set_value('url', $store['url']);?>">
                     <?php echo form_error('url'); ?>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="control-label">Opening Time</label>
+                    <label class="control-label">Jam Buka</label>
                     <select name="o_hr" id="o_hr" class="form-control
-                    <?php echo (form_error('o_hr') != "") ? 'is-invalid' : '';?>" data-placeholder="Choose a Category">
-                        <option value="">--Select your Hours--</option>
+                    <?php echo (form_error('o_hr') != "") ? 'is-invalid' : '';?>" data-placeholder="Pilih Jam Buka">
+                        <option value="">--Pilih Jam Buka--</option>
                         <option value="8am" <?php echo $store['o_hr'] == "8am" ? "selected" : "";?>>8am</option>
                         <option value="9am" <?php echo $store['o_hr'] == "9am" ? "selected" : "";?>>9am</option>
                         <option value="10am" <?php echo $store['o_hr'] == "10am" ? "selected" : "";?>>10am</option>
@@ -47,32 +48,31 @@
                     <?php echo form_error('o_hr'); ?>
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Closing Time</label>
+                    <label class="control-label">Jam Tutup</label>
                     <select name="c_hr" id="c_hr" class="form-control
-                    <?php echo (form_error('c_hr') != "") ? 'is-invalid' : '';?>" data-placeholder="Choose a Category">
-                        <option value="">--Select your Hours--</option>
-                        <option value="6pm <?php echo $store['c_hr'] == "6pm" ? "selected" : "";?>">6pm</option>
+                    <?php echo (form_error('c_hr') != "") ? 'is-invalid' : '';?>" data-placeholder="Pilih Jam Tutup">
+                        <option value="">--Pilih Jam Tutup--</option>
+                        <option value="6pm" <?php echo $store['c_hr'] == "6pm" ? "selected" : "";?>>6pm</option>
                         <option value="7pm" <?php echo $store['c_hr'] == "7pm" ? "selected" : "";?>>7pm</option>
                         <option value="8pm" <?php echo $store['c_hr'] == "8pm" ? "selected" : "";?>>8pm</option>
                     </select>
                     <?php echo form_error('c_hr'); ?>
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Open Days</label>
+                    <label class="control-label">Hari Buka</label>
                     <select name="o_days" id="o_days" class="form-control 
-                    <?php echo (form_error('o_days') != "") ? 'is-invalid' : '';?>" data-placeholder="Choose a Category"
-                        tabindex="1">
-                        <option value="">--Select your Days--</option>
-                        <option value="mon-fri <?php echo $store['o_days'] == "mon-fri" ? "selected" : "";?>">mon-fri</option>
-                        <option value="mon-sat" <?php echo $store['o_days'] == "mon-sat" ? "selected" : "";?>>mon-sat</option>
-                        <option value="24hr-x7" <?php echo $store['o_days'] == "24hr-x7" ? "selected" : "";?>>24hr-x7</option>
+                    <?php echo (form_error('o_days') != "") ? 'is-invalid' : '';?>" data-placeholder="Pilih Hari Buka" tabindex="1">
+                        <option value="">--Pilih Hari Buka--</option>
+                        <option value="mon-fri" <?php echo $store['o_days'] == "mon-fri" ? "selected" : "";?>>Senin-Jumat</option>
+                        <option value="mon-sat" <?php echo $store['o_days'] == "mon-sat" ? "selected" : "";?>>Senin-Sabtu</option>
+                        <option value="24hr-x7" <?php echo $store['o_days'] == "24hr-x7" ? "selected" : "";?>>24 Jam-7 Hari</option>
                     </select>
                     <?php echo form_error('o_days'); ?>
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="form-group has-danger">
-                    <label for="image">Image</label>
+                    <label for="image">Gambar</label>
                     <input type="file" name="image" id="image" class="form-control 
                     <?php echo(!empty($errorImageUpload))  ? 'is-invalid' : '';?>">
                     <br>
@@ -85,16 +85,16 @@
                     <?php } ?>
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Select Category</label>
+                    <label class="control-label">Pilih Kategori</label>
                     <select name="c_name" id="c_name"
                         class="form-control <?php echo (form_error('c_name') != "") ? 'is-invalid' : '';?>">
-                        <option value="">--Select Category--</option>
+                        <option value="">--Pilih Kategori--</option>
                         <?php 
                 if (!empty($cats)) { 
                     foreach($cats as $cat) {
                         ?>
-                        <option value="<?php echo $cat['c_id'];?>">
-                            <?php echo $cat['c_name'];?>
+                        <option value="<?php echo $cat['c_id'];?>"
+                            <?php echo $store['c_name'] == $cat['c_name'] ? "selected" : "";?>><?php echo $cat['c_name'];?>
                         </option>
                         <?php }
                 }
@@ -102,7 +102,7 @@
                     </select>
                     <?php echo form_error('c_name');?>
                 </div>
-                <h3 class="box-title m-t-40">Address</h3>
+                <h3 class="box-title m-t-40">Alamat</h3>
                 <div class="form-group">
                     <textarea name="address" type="text" style="height:70px;"
                         class="form-control
@@ -111,8 +111,8 @@
             </div>
         </div>
         <div class="form-actions">
-            <input type="submit" name="submit" class="btn btn-success" value="Make Changes">
-            <a href="<?php echo base_url().'admin/store/index'?>" class="btn btn-secondary">Cancel</a>
+            <input type="submit" name="submit" class="btn btn-success" value="Simpan Perubahan">
+            <a href="<?php echo base_url().'admin/store/index'?>" class="btn btn-secondary">Batal</a>
         </div>
     </form>
 </div>
