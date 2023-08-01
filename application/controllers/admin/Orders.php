@@ -1,3 +1,4 @@
+<?php
 defined('BASEPATH') OR exit ('No direct script access allowed');
 
 class Orders extends CI_Controller {
@@ -44,7 +45,6 @@ class Orders extends CI_Controller {
             redirect(base_url().'admin/orders/index');
 
         } else {
-            // Jika form tidak berhasil melewati validasi, tampilkan kembali halaman daftar pesanan dengan pesan kesalahan.
             $order = $this->Order_model->getAllOrders();
             $data['orders'] = $order;
         }
@@ -56,12 +56,10 @@ class Orders extends CI_Controller {
 
 
         if(empty($order)) {
-            // Jika data pesanan tidak ditemukan berdasarkan ID yang diberikan, tampilkan pesan kesalahan dan kembali ke halaman daftar pesanan.
             $this->session->set_flashdata('error', 'Order not found');
             redirect(base_url().'admin/orders/index');
         }
 
-        // Hapus pesanan berdasarkan ID yang diberikan.
         $this->Order_model->deleteOrder($id);
 
         $this->session->set_flashdata('success', 'Order deleted successfully');
