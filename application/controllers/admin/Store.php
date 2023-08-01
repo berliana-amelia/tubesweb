@@ -1,4 +1,3 @@
-<?php
 defined('BASEPATH') OR exit ('No direct script access allowed');
 
 class Store extends CI_Controller {
@@ -34,8 +33,6 @@ class Store extends CI_Controller {
 
         $this->load->library('upload', $config);
 
-        
-
         $this->load->model('Store_model');
         $this->load->library('form_validation');
         $this->form_validation->set_error_delimiters('<p class="invalid-feedback">','</p>');
@@ -51,19 +48,15 @@ class Store extends CI_Controller {
 
         if($this->form_validation->run() == true) {
 
-
             if(!empty($_FILES['image']['name'])){
                 //image is selected
                 if($this->upload->do_upload('image')) {
-                    //file uploaded suceessfully
+                    //file uploaded successfully
 
-                    
                     $data = $this->upload->data();
-
 
                     //resizing image for admin
                     resizeImage($config['upload_path'].$data['file_name'], $config['upload_path'].'thumb/'.$data['file_name'], 300,270);
-                    
 
                     $formArray['img'] = $data['file_name'];
                     $formArray['name'] = $this->input->post('res_name');
@@ -75,9 +68,9 @@ class Store extends CI_Controller {
                     $formArray['o_days'] = $this->input->post('o_days');
                     $formArray['c_id'] = $this->input->post('c_name');
                     $formArray['address'] = $this->input->post('address');
-        
+
                     $this->Store_model->create($formArray);
-        
+
                     $this->session->set_flashdata('res_success', 'Restaurant added successfully');
                     redirect(base_url(). 'admin/store/index');
 
@@ -93,7 +86,7 @@ class Store extends CI_Controller {
 
                 
             } else {
-                //if no image is selcted we will add res data without image
+                //if no image is selected we will add restaurant data without an image
                 $formArray['name'] = $this->input->post('res_name');
                 $formArray['email'] = $this->input->post('email');
                 $formArray['phone'] = $this->input->post('phone');
@@ -103,9 +96,9 @@ class Store extends CI_Controller {
                 $formArray['o_days'] = $this->input->post('o_days');
                 $formArray['c_id'] = $this->input->post('c_name');
                 $formArray['address'] = $this->input->post('address');
-    
+
                 $this->Store_model->create($formArray);
-    
+
                 $this->session->set_flashdata('res_success', 'Restaurant added successfully');
                 redirect(base_url(). 'admin/store/index');
             }
@@ -155,15 +148,12 @@ class Store extends CI_Controller {
             if(!empty($_FILES['image']['name'])){
                 //image is selected
                 if($this->upload->do_upload('image')) {
-                    //file uploaded suceessfully
+                    //file uploaded successfully
 
-                    
                     $data = $this->upload->data();
-
 
                     //resizing image
                     resizeImage($config['upload_path'].$data['file_name'], $config['upload_path'].'thumb/'.$data['file_name'], 300,270);
-
 
                     $formArray['img'] = $data['file_name'];
                     $formArray['name'] = $this->input->post('res_name');
@@ -175,11 +165,10 @@ class Store extends CI_Controller {
                     $formArray['o_days'] = $this->input->post('o_days');
                     $formArray['c_id'] = $this->input->post('c_name');
                     $formArray['address'] = $this->input->post('address');
-        
-                    $this->Store_model->update($id, $formArray);
-        
-                    //deleting existing files
 
+                    $this->Store_model->update($id, $formArray);
+
+                    //deleting existing files
                     if (file_exists('./public/uploads/restaurant/'.$store['img'])) {
                         unlink('./public/uploads/restaurant/'.$store['img']);
                     }
@@ -205,7 +194,7 @@ class Store extends CI_Controller {
                 
             } else {
 
-                //if no image is selcted we will add res data without image
+                //if no image is selected we will add restaurant data without an image
                 $formArray['name'] = $this->input->post('res_name');
                 $formArray['email'] = $this->input->post('email');
                 $formArray['phone'] = $this->input->post('phone');
@@ -215,9 +204,9 @@ class Store extends CI_Controller {
                 $formArray['o_days'] = $this->input->post('o_days');
                 $formArray['c_id'] = $this->input->post('c_name');
                 $formArray['address'] = $this->input->post('address');
-    
+
                 $this->Store_model->update($id ,$formArray);
-    
+
                 $this->session->set_flashdata('res_success', 'Restaurant updated successfully');
                 redirect(base_url(). 'admin/store/index');
             }
@@ -239,7 +228,7 @@ class Store extends CI_Controller {
         $store = $this->Store_model->getStore($id);
 
         if(empty($store)) {
-            $this->session->set_flashdata('error', 'restaurant not found');
+            $this->session->set_flashdata('error', 'Restaurant not found');
             redirect(base_url().'admin/store');
         }
 
@@ -253,7 +242,7 @@ class Store extends CI_Controller {
 
         $this->Store_model->delete($id);
 
-        $this->session->set_flashdata('res_success', 'Store deleted successfully');
+        $this->session->set_flashdata('res_success', 'Restaurant deleted successfully');
         redirect(base_url().'admin/store/index');
 
     }
